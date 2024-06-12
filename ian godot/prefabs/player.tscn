@@ -23,9 +23,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_vl3s4")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
-"speed": 7.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -34,7 +34,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_sgbrk")
 }],
-"loop": true,
+"loop": false,
 "name": &"move",
 "speed": 5.0
 }, {
@@ -45,7 +45,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_rblq6")
 }],
-"loop": true,
+"loop": false,
 "name": &"move_down",
 "speed": 5.0
 }, {
@@ -56,7 +56,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_n7dh8")
 }],
-"loop": true,
+"loop": false,
 "name": &"move_up",
 "speed": 5.0
 }]
@@ -70,7 +70,8 @@ script = ExtResource("1_jqgdw")
 [node name="Anim" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_twy2h")
-animation = &"move"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(9.31323e-10, 7)
