@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://yar4focbsuo5"]
+
+[ext_resource type="Texture2D" uid="uid://cygv6va07a827" path="res://assets/player_idle-01.png" id="1_56jg6"]
+[ext_resource type="Script" path="res://prefabs/player.gd" id="1_jqgdw"]
+[ext_resource type="Texture2D" uid="uid://pprymfll6xm8" path="res://assets/player_idle-02.png" id="2_xi0ke"]
+[ext_resource type="Texture2D" uid="uid://2hytw5mf332" path="res://assets/player_idle-03.png" id="3_vl3s4"]
+[ext_resource type="Texture2D" uid="uid://ders0i18yuvii" path="res://assets/player_move-01.png" id="4_ah6lq"]
+[ext_resource type="Texture2D" uid="uid://ddhvkm02crdyg" path="res://assets/player_move-02.png" id="5_sgbrk"]
+[ext_resource type="Texture2D" uid="uid://suwb8m78h7ty" path="res://assets/player_down-01.png" id="6_djttr"]
+[ext_resource type="Texture2D" uid="uid://h272s26e08hc" path="res://assets/player_down-02.png" id="7_rblq6"]
+[ext_resource type="Texture2D" uid="uid://bv22jkmqp6855" path="res://assets/player_up-01.png" id="8_5bkm1"]
+[ext_resource type="Texture2D" uid="uid://dil2qiwuadvwv" path="res://assets/player_up-02.png" id="9_n7dh8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_twy2h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_56jg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xi0ke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vl3s4")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ah6lq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sgbrk")
+}],
+"loop": false,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_djttr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rblq6")
+}],
+"loop": false,
+"name": &"move_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_5bkm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_n7dh8")
+}],
+"loop": false,
+"name": &"move_up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q041m"]
+radius = 26.0192
+
+[node name="player" type="Area2D"]
+script = ExtResource("1_jqgdw")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_twy2h")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(9.31323e-10, 7)
+rotation = 0.0119671
+scale = Vector2(1.12162, 0.92006)
+shape = SubResource("CircleShape2D_q041m")
+
+[node name="visible" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
